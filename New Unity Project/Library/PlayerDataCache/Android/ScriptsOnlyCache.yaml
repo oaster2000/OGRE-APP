@@ -1,8 +1,9 @@
 ScriptsOnlyBuild:
   usedScripts:
+    Assembly-CSharp.dll:
+    - ColourSwitcher
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -48,11 +49,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10224}
     - Class: 114
-      Script: {instanceID: 10558}
+      Script: {instanceID: 10436}
     - Class: 114
-      Script: {instanceID: 10996}
+      Script: {instanceID: 10560}
     - Class: 114
-      Script: {instanceID: 11336}
+      Script: {instanceID: 10998}
+    - Class: 114
+      Script: {instanceID: 11338}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -274,6 +277,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalTrack
+  - hash:
+      serializedVersion: 2
+      Hash: b09dfa06baca4e38bd72f6ec8962def9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ColourSwitcher
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
