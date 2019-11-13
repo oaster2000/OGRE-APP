@@ -1036,8 +1036,8 @@ MonoBehaviour:
   top: -30
   right: -20
   bottom: 30
-  delay: 1
-  lerp_speed: 0.1
+  delay: 0.1
+  lerp_speed: 0.2
 --- !u!1 &744355280
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,14 +35,7 @@ public class SwipeMenu : MonoBehaviour
 			//contents[i].offsetMax = new Vector2(right + delta, top);
 			//appropriately space each element of the sliding menu
 
-			Debug.Log(contents[i].position);
-			Debug.Log(contents[i].anchoredPosition);
-			Debug.Log(contents[i].rect.position);
-			Debug.Log("next");
 		}
-		Debug.Log("break");
-
-
 	}
 
 	void Start()
@@ -74,11 +67,11 @@ public class SwipeMenu : MonoBehaviour
 
 
 
-		float min = Mathf.Infinity;
+		float min = Mathf.Abs(contents[0].position.x); ;
 		current = 0;
-		for(int i = 0; i < contents.Length;i++)
+		for(int i = 1; i < contents.Length;i++)
 		{
-			if (Mathf.Abs(contents[i].position.x - (contents[i].rect.width + min_spacing)) < min)
+			if (Mathf.Abs(contents[i].position.x - ((contents[i].rect.width + min_spacing)*2.5f)) < min)
 			{
 				current = i;
 				min = Mathf.Abs(contents[i].position.x);
