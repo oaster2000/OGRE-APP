@@ -14,7 +14,7 @@ public class SwipeMenu : MonoBehaviour
 	public int current;
 	public int min_spacing_h, min_spacing_v;
 	private int min_spacing;
-	public float left, top, right, bottom, delay, lerp_speed;
+	public float delay, lerp_speed, tolerance;
 
 	private float time_since_release = float.MaxValue;
 	private DeviceOrientation prev_orientation;
@@ -24,7 +24,6 @@ public class SwipeMenu : MonoBehaviour
 		for (int i = 0; i < contents.Length; i++)
 		{
 
-			Debug.Log(Input.deviceOrientation);
 			min_spacing = (prev_orientation == DeviceOrientation.LandscapeLeft || prev_orientation == DeviceOrientation.LandscapeRight) ? min_spacing_h : min_spacing_v;
 			// if landscape then min spacing is horizontal otherwise assume vertical
 
@@ -71,7 +70,7 @@ public class SwipeMenu : MonoBehaviour
 		current = 0;
 		for(int i = 1; i < contents.Length;i++)
 		{
-			if (Mathf.Abs(contents[i].position.x - ((contents[i].rect.width + min_spacing)*2.5f)) < min)
+			if (Mathf.Abs(contents[i].position.x - ((contents[i].rect.width + min_spacing)*2f)) < min)
 			{
 				current = i;
 				min = Mathf.Abs(contents[i].position.x);
@@ -88,15 +87,35 @@ public class SwipeMenu : MonoBehaviour
 
 			if (time_since_release >= delay)
 			{
+				//stops clashing between inertia of scrollrect and lerp
+				centre.parent.GetComponent<UnityEngine.UI.ScrollRect>().inertia = false;
+
+				Debug.Log(Mathf.Abs(centre.anchoredPosition.x - contents[current].anchoredPosition.x));
+				//if (Mathf.Abs(centre.anchoredPosition.x - contents[current].anchoredPosition.x) < tolerance)
+				//{
+
+					//snap to correct position if close enough
+					//centre.anchoredPosition = new Vector2(contents[current].anchoredPosition.x * -1.0f, centre.anchoredPosition.y);
+				//}else
+				//{
+					//if not close enough then smoothly move closer
+					centre.anchoredPosition = new Vector2(Mathf.Lerp(centre.anchoredPosition.x, contents[current].anchoredPosition.x * -1.0f, lerp_speed), centre.anchoredPosition.y);
+				//}	
+			}
 
 
-				centre.anchoredPosition = new Vector2(Mathf.Lerp(centre.anchoredPosition.x,contents[current].anchoredPosition.x * -1.0f,lerp_speed), centre.anchoredPosition.y);
+			Debug.Log(Mathf.Abs(centre.anchoredPosition.x - contents[current].anchoredPosition.x));
+			if(Mathf.Abs(centre.anchoredPosition.x - contents[current].anchoredPosition.x) < tolerance)
+			{
+				//snap to correct position if close enough
+				//centre.anchoredPosition = new Vector2(contents[current].anchoredPosition.x * -1.0f, centre.anchoredPosition.y);
 			}
 
 		}
 		else
 		{
 			time_since_release = 0.0f;
+			centre.parent.GetComponent<UnityEngine.UI.ScrollRect>().inertia = true;
 		}
 	}
 }
