@@ -32,6 +32,7 @@ public class ColourSwitcher : MonoBehaviour
 
 
     public GameObject[] color1;
+    public GameObject[] color2;
     public GameObject wall;
     public GameObject floor;
 
@@ -47,6 +48,12 @@ public class ColourSwitcher : MonoBehaviour
                 {
                     color1[i].GetComponent<Image>().color = palette1[0];
                 }
+
+            }
+            for (int i = 0; i < color2.Length; i++)
+            {
+                if (color2[i].GetComponent<Image>())
+                    color2[i].GetComponent<Image>().color = palette1[1];
             }
             wall.GetComponent<MeshRenderer>().material = p1Wall;
             floor.GetComponent<MeshRenderer>().material = p1Floor;
@@ -58,6 +65,11 @@ public class ColourSwitcher : MonoBehaviour
                 if (color1[i].GetComponent<Image>())
                     color1[i].GetComponent<Image>().color = palette2[0];
             }
+            for (int i = 0; i < color2.Length; i++)
+            {
+                if (color2[i].GetComponent<Image>())
+                    color2[i].GetComponent<Image>().color = palette2[1];
+            }
             wall.GetComponent<MeshRenderer>().material = p2Wall;
             floor.GetComponent<MeshRenderer>().material = p2Floor;
         }
@@ -67,6 +79,11 @@ public class ColourSwitcher : MonoBehaviour
             {
                 if (color1[i].GetComponent<Image>())
                     color1[i].GetComponent<Image>().color = palette3[0];
+            }
+            for (int i = 0; i < color2.Length; i++)
+            {
+                if (color2[i].GetComponent<Image>())
+                    color2[i].GetComponent<Image>().color = palette3[1];
             }
             wall.GetComponent<MeshRenderer>().material = p3Wall;
             floor.GetComponent<MeshRenderer>().material = p3Floor;
@@ -78,6 +95,11 @@ public class ColourSwitcher : MonoBehaviour
                 if (color1[i].GetComponent<Image>())
                     color1[i].GetComponent<Image>().color = palette4[0];
             }
+            for (int i = 0; i < color2.Length; i++)
+            {
+                if (color2[i].GetComponent<Image>())
+                    color2[i].GetComponent<Image>().color = palette4[1];
+            }
             wall.GetComponent<MeshRenderer>().material = p4Wall;
             floor.GetComponent<MeshRenderer>().material = p4Floor;
         }
@@ -88,6 +110,11 @@ public class ColourSwitcher : MonoBehaviour
                 if (color1[i].GetComponent<Image>())
                     color1[i].GetComponent<Image>().color = palette5[0];
             }
+            for (int i = 0; i < color2.Length; i++)
+            {
+                if (color2[i].GetComponent<Image>())
+                    color2[i].GetComponent<Image>().color = palette5[1];
+            }
             wall.GetComponent<MeshRenderer>().material = p5Wall;
             floor.GetComponent<MeshRenderer>().material = p5Floor;
         }
@@ -97,6 +124,11 @@ public class ColourSwitcher : MonoBehaviour
             {
                 if (color1[i].GetComponent<Image>())
                     color1[i].GetComponent<Image>().color = palette6[0];
+            }
+            for (int i = 0; i < color2.Length; i++)
+            {
+                if (color2[i].GetComponent<Image>())
+                    color2[i].GetComponent<Image>().color = palette6[1];
             }
             wall.GetComponent<MeshRenderer>().material = p6Wall;
             floor.GetComponent<MeshRenderer>().material = p6Floor;
